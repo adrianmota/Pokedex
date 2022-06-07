@@ -1,0 +1,66 @@
+﻿@model Application.ViewModels.SavePokemonViewModel
+@{
+    var editMode = !(Model.Id == 0);
+    var title = editMode ? "Editar" : "Crear";
+    var action = editMode ? "EditPost" : "CreatePost";
+    var message = editMode ? "Editar pokémon" : "Crear un nuevo pokémon";
+    ViewData["Title"] = $"{title} Pokémon";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="card">
+            <div class="card-header bg-black text-white">
+                <h4>@message</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="Pokemon" asp-action="@action">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Nombre:</label>
+                        <input asp-for="Name" type="text" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ImageUrl" class="form-label">Url de la imagen:</label>
+                        <input asp-for="ImageUrl" type="text" class="form-control" />
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <select asp-for="RegionId" class="form-select">
+                            <option value="0">Seleccione la región</option>
+                            @foreach (var region in Model.Regions)
+                            {
+                                <option value="@region.Id">@region.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="RegionId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <select asp-for="PrimaryTypeId" class="form-select">
+                            <option value="0">Seleccione el tipo primario</option>
+                            @foreach (var pokemonType in Model.PokemonTypes)
+                            {
+                                <option value="@pokemonType.Id">@pokemonType.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="PrimaryTypeId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <select asp-for="SecondaryTypeId" class="form-select">
+                            <option value="0">Seleccione el tipo secundario</option>
+                            @foreach (var pokemonType in Model.PokemonTypes)
+                            {
+                                <option value="@pokemonType.Id">@pokemonType.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <input type="hidden" asp-for="Id"/>
+
+                    <button class="btn btn-ms btn-primary" type="submit">Guardar</button>
+                    <a class="btn btn-ms btn-secondary" asp-controller="Pokemon" asp-action="Index">Volver atrás</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

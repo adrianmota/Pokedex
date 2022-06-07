@@ -1,0 +1,30 @@
+﻿@model Application.ViewModels.PokemonTypeViewModel
+@{
+    bool editMode = !(Model.Id == 0);
+    string title = editMode ? "Editar tipo de pokémon" : "Crear tipo de pokémon";
+    string action = editMode ? "EditPost" : "Create";
+    ViewData["Title"] = title;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h4>@title</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="PokemonType" asp-action="@action">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Nombre:</label>
+                        <input asp-for="Name" type="text" class="form-control"/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input asp-for="Id" type="hidden"/>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                    <a asp-controller="PokemonType" asp-action="Index" class="btn btn-secondary">Volver atrás</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

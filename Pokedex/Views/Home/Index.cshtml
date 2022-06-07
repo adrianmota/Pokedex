@@ -1,0 +1,53 @@
+﻿@model Application.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-6">
+            @*<form method="post" asp-controller="Home" asp-action="FilterByRegion">
+                <input id="name" type="checkbox"/><label for="name">Nombre</label>
+                <button class="btn btn-primary" type="submit">Filtrar</button>
+            </form>*@
+        </div>
+        <div class="col-6 offset-7">
+            <div class="form">
+                <form method="post" asp-controller="Home" asp-action="SearchByName">
+                    <input asp-for="PokemonName" type="text" placeholder="Pikachu" />
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.PokemonViewModel == null || Model.PokemonViewModel.Count == 0)
+        {
+            <h4>No se encontraron pokémones</h4>
+        }
+        else
+        {
+            foreach (var pokemon in Model.PokemonViewModel)
+            {
+                string secondaryType = "";
+                if (!(pokemon.SecondaryType == null))
+                {
+                    secondaryType = ", " + pokemon.SecondaryType.Name;
+                }
+                <div class="col-4 mb-3">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top pokemon-image-height" src="@pokemon.ImageUrl" />
+
+                        <div class="card-body">
+                            <p class="card-text">Nombre: @pokemon.Name</p>
+                            <p class="card-text">Región: @pokemon.Region.Name</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Tipo: @pokemon.PrimaryType.Name@secondaryType</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
