@@ -5,9 +5,9 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="card">
+        <div class="card p-0 col-6 offset-3">
             <div class="card-header">
-                <h4>¿Está seguro que desea borrar el tipo de pokémon @Model.Name?</h4>
+                <h4 class="text-center">¿Está seguro que desea borrar el tipo de pokémon @Model.Name?</h4>
             </div>
             <div class="card-body">
                 <form method="post" asp-controller="PokemonType" asp-action="Delete">

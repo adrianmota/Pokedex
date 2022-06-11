@@ -39,7 +39,7 @@ namespace Application.Services
             await _repository.DeleteAsync(pokemonType);
         }
 
-        public async Task<List<PokemonTypeViewModel>> GetAllPokemonTypeViewModel()
+        public async Task<List<PokemonTypeViewModel>> GetAllViewModel()
         {
             var pokemonTypes = await _repository.GetAllAsync();
 
@@ -50,7 +50,7 @@ namespace Application.Services
             }).ToList();
         }
 
-        public async Task<PokemonTypeViewModel> GetByIdPokemonTypeViewModel(int id)
+        public async Task<PokemonTypeViewModel> GetByIdViewModel(int id)
         {
             PokemonType pokemonType = await _repository.GetByIdAsync(id);
             return new PokemonTypeViewModel

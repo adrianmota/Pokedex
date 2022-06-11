@@ -25,10 +25,10 @@
         <div class="col-4 mb-3 h-355">
             <div class="card shadow-sm">
                 <div class="card-header bg-black text-white">
-                    <h4>Filtros</h4>
+                    <h5>Filtros</h5>
                 </div>
                 <div class="card-body">
-                    <div class="card-header mb-3">
+                    <div class="card-header mb-3 p-0 bg-white">
                         <h6>Regiones</h6>
                     </div>
 
@@ -73,10 +73,10 @@
                 <div class="col-4 mb-3">
                     <div class="card shadow-sm">
                         <img class="bd-placeholder-img card-img-top pokemon-image-height" src="@pokemon.ImageUrl" />
-
+                        <hr class="m-0">
                         <div class="card-body">
-                            <p class="card-text">Nombre: @pokemon.Name</p>
-                            <p class="card-text">Región: @pokemon.Region.Name</p>
+                            <p class="card-text"><strong>@pokemon.Name</strong></p>
+                            <p class="card-text">Región: <i>@pokemon.Region.Name</i></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">Tipo: @pokemon.PrimaryType.Name@secondaryType</small>
                             </div>

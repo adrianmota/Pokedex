@@ -38,7 +38,7 @@ namespace Pokedex.Controllers
                 _viewModel.PokemonViewModel = await _pokemonService.GetAllViewModel();
             }
             
-            _viewModel.Regions = await _regionService.GetAllRegionViewModel();
+            _viewModel.Regions = await _regionService.GetAllViewModel();
             return View(_viewModel);
         }
 
@@ -48,12 +48,12 @@ namespace Pokedex.Controllers
             if (PokemonName == null)
             {
                 _viewModel.PokemonViewModel = await _pokemonService.GetAllViewModel();
-                _viewModel.Regions = await _regionService.GetAllRegionViewModel();
+                _viewModel.Regions = await _regionService.GetAllViewModel();
                 return View("Index", _viewModel);
             }
 
             _viewModel.PokemonViewModel = await _pokemonService.Search(PokemonName);
-            _viewModel.Regions = await _regionService.GetAllRegionViewModel();
+            _viewModel.Regions = await _regionService.GetAllViewModel();
             return View("Index", _viewModel);
         }
     }

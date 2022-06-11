@@ -17,7 +17,7 @@ namespace Pokedex.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var pokemonTypes = await _service.GetAllPokemonTypeViewModel();
+            var pokemonTypes = await _service.GetAllViewModel();
             return View(pokemonTypes);
         }
 
@@ -42,7 +42,7 @@ namespace Pokedex.Controllers
         public async Task<IActionResult> Edit(PokemonTypeViewModel viewModel)
         {
             ModelState.Clear();
-            PokemonTypeViewModel pokemonType = await _service.GetByIdPokemonTypeViewModel(viewModel.Id);
+            PokemonTypeViewModel pokemonType = await _service.GetByIdViewModel(viewModel.Id);
             return View("SavePokemonType", pokemonType);
         }
 
@@ -60,7 +60,7 @@ namespace Pokedex.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            return View(await _service.GetByIdPokemonTypeViewModel(id));
+            return View(await _service.GetByIdViewModel(id));
         }
 
         [HttpPost]

@@ -83,7 +83,7 @@ body {
 .restrict-size {
     overflow: scroll;
     overflow-x: hidden;
-    max-height: 150px;
+    max-height: 170px;
 }
 
 .align-item-end {
@@ -96,8 +96,4 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-}
-
-.custom-bg-blue {
-    background-color: #14213d;
 }

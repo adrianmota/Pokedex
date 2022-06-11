@@ -57,8 +57,8 @@ namespace Application.Services
         {
             List<Pokemon> pokemon = await _repository.GetAllAsync();
             List<PokemonViewModel> pokemonViewModel = new();
-            var regions = await _regionService.GetAllRegionViewModel();
-            var pokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();
+            var regions = await _regionService.GetAllViewModel();
+            var pokemonTypes = await _pokemonTypeService.GetAllViewModel();
 
             foreach (var pokem in pokemon)
             {
@@ -82,8 +82,8 @@ namespace Application.Services
         public async Task<List<PokemonViewModel>> Filter(int regionId)
         {
             List<PokemonViewModel> viewModels = new();
-            var regions = await _regionService.GetAllRegionViewModel();
-            var pokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();
+            var regions = await _regionService.GetAllViewModel();
+            var pokemonTypes = await _pokemonTypeService.GetAllViewModel();
             var pokemon = await _repository.GetAllAsync();
             
             foreach (Pokemon pok in pokemon)
@@ -129,8 +129,8 @@ namespace Application.Services
 
         private async Task<List<PokemonViewModel>> GenerateViewModel(List<Pokemon> pokemon)
         {
-            var regions = await _regionService.GetAllRegionViewModel();
-            var pokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();
+            var regions = await _regionService.GetAllViewModel();
+            var pokemonTypes = await _pokemonTypeService.GetAllViewModel();
 
             var pokemonViewModel = pokemon.Select(pokemon => new PokemonViewModel
             {

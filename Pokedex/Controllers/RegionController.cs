@@ -17,7 +17,7 @@ namespace Pokedex.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var regions = await _service.GetAllRegionViewModel();
+            var regions = await _service.GetAllViewModel();
             return View(regions);
         }
 
@@ -41,7 +41,7 @@ namespace Pokedex.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var region = await _service.GetByIdRegionViewModel(id);
+            var region = await _service.GetByIdViewModel(id);
             return View("SaveRegion", region);
         }
 

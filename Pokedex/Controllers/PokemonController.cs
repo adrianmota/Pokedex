@@ -29,8 +29,8 @@ namespace Pokedex.Controllers
         public async Task<IActionResult> Create()
         {
             SavePokemonViewModel viewModel = new();
-            viewModel.Regions = await _regionService.GetAllRegionViewModel();
-            viewModel.PokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();
+            viewModel.Regions = await _regionService.GetAllViewModel();
+            viewModel.PokemonTypes = await _pokemonTypeService.GetAllViewModel();
             return View("SavePokemon", viewModel);
         }
 
@@ -39,8 +39,8 @@ namespace Pokedex.Controllers
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Regions = await _regionService.GetAllRegionViewModel();
-                viewModel.PokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();
+                viewModel.Regions = await _regionService.GetAllViewModel();
+                viewModel.PokemonTypes = await _pokemonTypeService.GetAllViewModel();
                 return View("SavePokemon", viewModel);
             }
 
@@ -51,8 +51,8 @@ namespace Pokedex.Controllers
         public async Task<IActionResult> Edit(SavePokemonViewModel viewModel)
         {
             viewModel = await _service.GetByIdSaveViewModel(viewModel.Id);
-            viewModel.Regions = await _regionService.GetAllRegionViewModel();
-            viewModel.PokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();
+            viewModel.Regions = await _regionService.GetAllViewModel();
+            viewModel.PokemonTypes = await _pokemonTypeService.GetAllViewModel();
             ModelState.Clear();
             return View("SavePokemon", viewModel);
         }
@@ -62,8 +62,8 @@ namespace Pokedex.Controllers
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Regions = await _regionService.GetAllRegionViewModel();
-                viewModel.PokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();
+                viewModel.Regions = await _regionService.GetAllViewModel();
+                viewModel.PokemonTypes = await _pokemonTypeService.GetAllViewModel();
                 return View("SavePokemon", viewModel);
             }
 

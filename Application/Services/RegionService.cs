@@ -40,7 +40,7 @@ namespace Application.Services
             await _repository.DeleteAsync(region);
         }
 
-        public async Task<RegionViewModel> GetByIdRegionViewModel(int id)
+        public async Task<RegionViewModel> GetByIdViewModel(int id)
         {
             Region region = await _repository.GetByIdAsync(id);
             return new RegionViewModel
@@ -50,7 +50,7 @@ namespace Application.Services
             };
         }
 
-        public async Task<List<RegionViewModel>> GetAllRegionViewModel()
+        public async Task<List<RegionViewModel>> GetAllViewModel()
         {
             var regions = await _repository.GetAllAsync();
 

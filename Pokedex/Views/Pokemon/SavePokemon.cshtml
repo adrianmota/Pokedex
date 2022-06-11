@@ -9,23 +9,24 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="card">
+        <div class="card p-0 col-6 offset-3">
             <div class="card-header bg-black text-white">
-                <h4>@message</h4>
+                <h4 class="text-center">@message</h4>
             </div>
             <div class="card-body">
                 <form method="post" asp-controller="Pokemon" asp-action="@action">
                     <div class="mb-3">
-                        <label asp-for="Name" class="form-label">Nombre:</label>
+                        <label asp-for="Name" class="form-label">Nombre</label>
                         <input asp-for="Name" type="text" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label asp-for="ImageUrl" class="form-label">Url de la imagen:</label>
+                        <label asp-for="ImageUrl" class="form-label">Url de la imagen</label>
                         <input asp-for="ImageUrl" type="text" class="form-control" />
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
+                        <label asp-for="RegionId" class="form-label">Región</label>
                         <select asp-for="RegionId" class="form-select">
                             <option value="0">Seleccione la región</option>
                             @foreach (var region in Model.Regions)
@@ -36,6 +37,7 @@
                         <span asp-validation-for="RegionId" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
+                        <label asp-for="PrimaryTypeId" class="form-label">Tipo Primario</label>
                         <select asp-for="PrimaryTypeId" class="form-select">
                             <option value="0">Seleccione el tipo primario</option>
                             @foreach (var pokemonType in Model.PokemonTypes)
@@ -46,6 +48,7 @@
                         <span asp-validation-for="PrimaryTypeId" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
+                        <label asp-for="SecondaryTypeId" class="form-label">Tipo Secundario (Opcional)</label>
                         <select asp-for="SecondaryTypeId" class="form-select">
                             <option value="0">Seleccione el tipo secundario</option>
                             @foreach (var pokemonType in Model.PokemonTypes)
@@ -55,10 +58,14 @@
                         </select>
                     </div>
 
-                    <input type="hidden" asp-for="Id"/>
+                    <input type="hidden" asp-for="Id" />
 
-                    <button class="btn btn-ms btn-primary" type="submit">Guardar</button>
-                    <a class="btn btn-ms btn-secondary" asp-controller="Pokemon" asp-action="Index">Volver atrás</a>
+                    <div class="align-group-end">
+                        <div>
+                            <button class="btn btn-ms btn-primary" type="submit">Guardar</button>
+                            <a class="btn btn-ms btn-secondary" asp-controller="Pokemon" asp-action="Index">Volver atrás</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

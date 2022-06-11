@@ -26,15 +26,15 @@
                 <div class="col-4 mb-3">
                     <div class="card shadow-sm">
                         <img class="bd-placeholder-img card-img-top pokemon-image-height" src="@pokemon.ImageUrl" />
-
+                        <hr class="m-0">
                         <div class="card-body">
-                            <p class="card-text">Nombre: @pokemon.Name</p>
-                            <p class="card-text">Región: @pokemon.Region.Name</p>
+                            <p class="card-text"><strong>@pokemon.Name</strong></p>
+                            <p class="card-text">Región: <i>@pokemon.Region.Name</i></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">Tipo: @pokemon.PrimaryType.Name@secondaryType</small>
                                 <div class="btn-group">
-                                    <a asp-controller="Pokemon" asp-action="Edit" asp-route-id="@pokemon.Id" class="btn btn-sm btn-outline-secondary">Editar</a>
-                                    <a asp-controller="Pokemon" asp-action="Delete" asp-route-id="@pokemon.Id" class="btn btn-sm btn-outline-danger">Borrar</a>
+                                    <a asp-controller="Pokemon" asp-action="Edit" asp-route-id="@pokemon.Id" class="btn btn-sm btn-outline-secondary"><i class="fa fa-pencil"></i> Editar</a>
+                                    <a asp-controller="Pokemon" asp-action="Delete" asp-route-id="@pokemon.Id" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i> Borrar</a>
                                 </div>
                             </div>
                         </div>

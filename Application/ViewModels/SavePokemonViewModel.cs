@@ -11,17 +11,17 @@ namespace Application.ViewModels
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Debe especificar el nombre")]
+        [Required(ErrorMessage = "* Debes especificar el nombre")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Debe especificar la ruta de la imagen")]
+        [Required(ErrorMessage = "* Debes especificar la ruta de la imagen")]
         public string ImageUrl { get; set; }
 
-        [Range(1, 1000, ErrorMessage = "Debe especificar el tipo primario")]
+        [Range(1, 1000, ErrorMessage = "* Debes especificar el tipo primario")]
         public int PrimaryTypeId { get; set; }
         public int SecondaryTypeId { get; set; }
 
-        [Range(1, 1000, ErrorMessage = "Debe seleccionar la región")]
+        [Range(1, 1000, ErrorMessage = "* Debes seleccionar la región")]
         public int RegionId { get; set; }
         public List<RegionViewModel> Regions { get; set; }
         public List<PokemonTypeViewModel> PokemonTypes { get; set; }
