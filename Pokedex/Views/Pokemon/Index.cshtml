@@ -4,6 +4,11 @@
 }
 
 <div class="container">
+    <div class="row mb-2">
+        <div class="col-4 offset-4">
+            <h4 class="text-center bg-white p-2 b-radius"><i>Pokémones</i></h4>
+        </div>
+    </div>
     <div class="row mb-3">
         <div class="col-3 offset-9">
             <a class="btn btn-ms btn-success w-100" asp-controller="Pokemon" asp-action="Create">Crear Pokémon</a>
@@ -24,7 +29,7 @@
                     secondaryType = ", " + pokemon.SecondaryType.Name;
                 }
                 <div class="col-4 mb-3">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm" title="@pokemon.Name">
                         <img class="bd-placeholder-img card-img-top pokemon-image-height" src="@pokemon.ImageUrl" />
                         <hr class="m-0">
                         <div class="card-body">

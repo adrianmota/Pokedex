@@ -5,29 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokédex - @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black text-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand text-white" title="Home Page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="navbar-brand text-white" title="Home Page" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/pokeball.png" width="30" height="30" alt="pokeball"/>
+                    <b>Home</b>
+                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item" title="Mant. de Pokémones">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Pokemon" asp-action="Index">Pokémones</a>
+                        <li class="nav-item" title="Pokémones">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Pokemon" asp-action="Index"><i>Pokémones</i></a>
                         </li>
-                        <li class="nav-item" title="Mant. de Regiones">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Region" asp-action="Index">Región</a>
+                        <li class="nav-item" title="Regiones">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Region" asp-action="Index"><i>Regiones</i></a>
                         </li>
-                        <li class="nav-item" title="Mant. de Tipos de Pokémones">
-                            <a class="nav-link text-white" asp-area="" asp-controller="PokemonType" asp-action="Index">Tipos de pokémones</a>
+                        <li class="nav-item" title="Tipos de Pokémones">
+                            <a class="nav-link text-white" asp-area="" asp-controller="PokemonType" asp-action="Index"><i>Tipos de pokémones</i></a>
                         </li>
                     </ul>
                 </div>
@@ -41,9 +43,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - Pokédex
+    <footer class="border-top footer bg-white text-muted">
+        <div class="container text-black">
+            &copy; @DateTime.Now.Year - <i>Pokédex</i>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
