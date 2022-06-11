@@ -1,25 +1,27 @@
 ﻿@model List<Application.ViewModels.PokemonTypeViewModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tipos de pokémones";
 }
 
 <div class="container-fluid">
     <div class="row mb-3">
-        <div class="col-4 offset-9">
-            <a class="btn btn-success" asp-controller="PokemonType" asp-action="Create">Crear tipo de pokémon</a>
+        <div class="col-3 offset-9">
+            <a class="btn btn-success w-100" asp-controller="PokemonType" asp-action="Create">Crear tipo de pokémon</a>
         </div>
     </div>
     <div class="row">
         @foreach (var pokemonType in Model)
         {
-            <div class="col-3 mb-3">
+            <div class="col-4 mb-3">
                 <div class="card">
                     <div class="card-header">
                         <h4>@pokemonType.Name</h4>
                     </div>
-                    <div class="card-body">
-                        <a class="btn btn-secondary" asp-controller="PokemonType" asp-action="Edit" asp-route-id="@pokemonType.Id">Editar</a>
-                        <a class="btn btn-danger" asp-controller="PokemonType" asp-action="Delete" asp-route-id="@pokemonType.Id">Borrar</a>
+                    <div class="card-body align-group-end">
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-secondary" asp-controller="PokemonType" asp-action="Edit" asp-route-id="@pokemonType.Id">Editar</a>
+                            <a class="btn btn-sm btn-outline-danger" asp-controller="PokemonType" asp-action="Delete" asp-route-id="@pokemonType.Id">Borrar</a>
+                        </div>
                     </div>
                 </div>
             </div>

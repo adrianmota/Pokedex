@@ -1,12 +1,12 @@
 ﻿@model List<Application.ViewModels.RegionViewModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Regiones";
 }
 
 <div class="container-fluid">
-    <div class="row mb-3">
-        <div class="col-4">
-            <a class="btn btn-success" asp-controller="Region" asp-action="Create">Crear región</a>
+    <div class="row">
+        <div class="col-3 offset-9 mb-3">
+            <a class="btn btn-success w-100" asp-controller="Region" asp-action="Create">Crear región</a>
         </div>
     </div>
     <div class="row">
@@ -18,15 +18,15 @@
         {
             @foreach (var region in Model)
             {
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card mb-3">
                         <div class="card-header">
                             <h4>@region.Name</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body align-group-end">
                             <div class="btn-group">
-                                <a asp-controller="Region" asp-action="Edit" asp-route-id="@region.Id" class="btn btn-ms btn-outline-secondary">Editar</a>
-                                <a asp-controller="Region" asp-action="Delete" asp-route-id="@region.Id" class="btn btn-ms btn-outline-danger">Borrar</a>
+                                <a class="btn btn-sm btn-outline-secondary" asp-controller="Region" asp-action="Edit" asp-route-id="@region.Id">Editar</a>
+                                <a class="btn btn-sm btn-outline-danger" asp-controller="Region" asp-action="Delete" asp-route-id="@region.Id">Borrar</a>
                             </div>
                         </div>
                     </div>

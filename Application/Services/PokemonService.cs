@@ -79,15 +79,41 @@ namespace Application.Services
             return pokemonViewModel;
         }
 
-        public async Task<List<PokemonViewModel>> GetAllPokemonViewModel()
+        public async Task<List<PokemonViewModel>> Filter(int regionId)
+        {
+            List<PokemonViewModel> viewModels = new();
+            var regions = await _regionService.GetAllRegionViewModel();
+            var pokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();
+            var pokemon = await _repository.GetAllAsync();
+            
+            foreach (Pokemon pok in pokemon)
+            {
+                if (pok.RegionId == regionId)
+                {
+                    viewModels.Add(new PokemonViewModel
+                    {
+                        Id = pok.Id,
+                        Name = pok.Name,
+                        ImageUrl = pok.ImageUrl,
+                        Region = regions.Find(region => region.Id == pok.RegionId),
+                        PrimaryType = pokemonTypes.Find(pokemonType => pokemonType.Id == pok.PrimaryTypeId),
+                        SecondaryType = pokemonTypes.Find(pokemonType => pokemonType.Id == pok.SecondaryTypeId)
+                    });
+                }
+            }
+
+            return viewModels;
+        }
+
+        public async Task<List<PokemonViewModel>> GetAllViewModel()
         {
             var pokemon = await _repository.GetAllAsync();
-            var pokemonViewModel = await GeneratePokemonViewModel(pokemon);
+            var pokemonViewModel = await GenerateViewModel(pokemon);
 
             return pokemonViewModel;
         }
 
-        public async Task<SavePokemonViewModel> GetByIdSavePokemonViewModel(int id)
+        public async Task<SavePokemonViewModel> GetByIdSaveViewModel(int id)
         {
             var pokemon = await _repository.GetByIdAsync(id);
             return new SavePokemonViewModel
@@ -101,7 +127,7 @@ namespace Application.Services
             };
         }
 
-        private async Task<List<PokemonViewModel>> GeneratePokemonViewModel(List<Pokemon> pokemon)
+        private async Task<List<PokemonViewModel>> GenerateViewModel(List<Pokemon> pokemon)
         {
             var regions = await _regionService.GetAllRegionViewModel();
             var pokemonTypes = await _pokemonTypeService.GetAllPokemonTypeViewModel();

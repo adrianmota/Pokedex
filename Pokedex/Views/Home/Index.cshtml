@@ -1,29 +1,65 @@
-﻿@model Application.ViewModels.HomeViewModel
+﻿@using Application.ViewModels
+@model Application.ViewModels.HomeViewModel
 @{
     ViewData["Title"] = "Home";
 }
 
 <div class="container">
     <div class="row mb-3">
-        <div class="col-6">
-            @*<form method="post" asp-controller="Home" asp-action="FilterByRegion">
-                <input id="name" type="checkbox"/><label for="name">Nombre</label>
-                <button class="btn btn-primary" type="submit">Filtrar</button>
-            </form>*@
-        </div>
-        <div class="col-6 offset-7">
-            <div class="form">
+        <div class="col-4 offset-8">
+            <div class="align-item-end">
                 <form method="post" asp-controller="Home" asp-action="SearchByName">
-                    <input asp-for="PokemonName" type="text" placeholder="Pikachu" />
-                    <button class="btn btn-primary" type="submit">Buscar</button>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <input class="form-control" title="Buscar por nombre" asp-for="PokemonName" type="text" placeholder="Pikachu" />
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
     <div class="row">
+        <div class="col-4 mb-3 h-355">
+            <div class="card shadow-sm">
+                <div class="card-header bg-black text-white">
+                    <h4>Filtros</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-header mb-3">
+                        <h6>Regiones</h6>
+                    </div>
+
+                    <form method="post" asp-controller="Home" asp-action="Index">
+                        <div class="restrict-size">
+                            <div class="mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" value="null" id="all" type="radio" name="RegionId" />
+                                    <label class="form-check-label" for="all">Todas</label>
+                                </div>
+                            </div>
+
+                            @foreach (RegionViewModel region in Model.Regions)
+                            {
+                                <div class="form-check w-100 mb-2">
+                                    <input class="form-check-input" id="region-@region.Id" value="@region.Id" name="RegionId" type="radio" />
+                                    <label class="form-check-label" for="region-@region.Id">@region.Name</label>
+                                </div>
+                            }
+                        </div>
+
+                        <button class="btn btn-primary w-100" type="submit">Filtrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         @if (Model.PokemonViewModel == null || Model.PokemonViewModel.Count == 0)
         {
-            <h4>No se encontraron pokémones</h4>
+            <div class="col-4 mb-3">
+                <h4>No se encontraron pokémones</h4>
+            </div>
         }
         else
         {

@@ -27,21 +27,33 @@ namespace Pokedex.Controllers
             _viewModel = new();
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? RegionId)
         {
-            _viewModel.PokemonViewModel = await _pokemonService.GetAllPokemonViewModel();
+            if (RegionId != null)
+            {
+                _viewModel.PokemonViewModel = await _pokemonService.Filter(RegionId ?? default(int));
+            }
+            else
+            {
+                _viewModel.PokemonViewModel = await _pokemonService.GetAllViewModel();
+            }
+            
+            _viewModel.Regions = await _regionService.GetAllRegionViewModel();
             return View(_viewModel);
-        }
-
-        public IActionResult FilterByRegion()
-        {
-            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> SearchByName(string PokemonName)
         {
+            if (PokemonName == null)
+            {
+                _viewModel.PokemonViewModel = await _pokemonService.GetAllViewModel();
+                _viewModel.Regions = await _regionService.GetAllRegionViewModel();
+                return View("Index", _viewModel);
+            }
+
             _viewModel.PokemonViewModel = await _pokemonService.Search(PokemonName);
+            _viewModel.Regions = await _regionService.GetAllRegionViewModel();
             return View("Index", _viewModel);
         }
     }

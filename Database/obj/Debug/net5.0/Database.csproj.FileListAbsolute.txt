@@ -1,0 +1,15 @@
+C:\Users\LENOVO\workspace\Pokedex\Database\bin\Debug\net5.0\Database.deps.json
+C:\Users\LENOVO\workspace\Pokedex\Database\bin\Debug\net5.0\Database.runtimeconfig.json
+C:\Users\LENOVO\workspace\Pokedex\Database\bin\Debug\net5.0\Database.runtimeconfig.dev.json
+C:\Users\LENOVO\workspace\Pokedex\Database\bin\Debug\net5.0\Database.dll
+C:\Users\LENOVO\workspace\Pokedex\Database\bin\Debug\net5.0\Database.pdb
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\Database.csproj.AssemblyReference.cache
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\Database.AssemblyInfoInputs.cache
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\Database.AssemblyInfo.cs
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\Database.dll
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\refint\Database.dll
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\Database.pdb
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\Database.genruntimeconfig.cache
+C:\Users\LENOVO\workspace\Pokedex\Database\obj\Debug\net5.0\ref\Database.dll
