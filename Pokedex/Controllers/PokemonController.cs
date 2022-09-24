@@ -3,7 +3,6 @@ using Application.Services;
 using Application.ViewModels;
 using Database;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace Pokedex.Controllers
 {

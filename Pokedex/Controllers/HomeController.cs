@@ -1,10 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Pokedex.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Application.Services;
 using Application.ViewModels;
@@ -16,13 +10,11 @@ namespace Pokedex.Controllers
     {
         private readonly PokemonService _pokemonService;
         private readonly HomeViewModel _viewModel;
-        private readonly PokemonTypeService _pokemonTypeService;
         private readonly RegionService _regionService;
 
         public HomeController(ApplicationContext dbContext)
         {
             _pokemonService = new(dbContext);
-            _pokemonTypeService = new(dbContext);
             _regionService = new(dbContext);
             _viewModel = new();
         }
@@ -47,9 +39,7 @@ namespace Pokedex.Controllers
         {
             if (PokemonName == null)
             {
-                _viewModel.PokemonViewModel = await _pokemonService.GetAllViewModel();
-                _viewModel.Regions = await _regionService.GetAllViewModel();
-                return View("Index", _viewModel);
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
 
             _viewModel.PokemonViewModel = await _pokemonService.Search(PokemonName);

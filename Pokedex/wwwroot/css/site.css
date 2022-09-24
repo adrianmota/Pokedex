@@ -83,6 +83,7 @@ body {
 .restrict-size {
     overflow: scroll;
     overflow-x: hidden;
+    min-height: 170px;
     max-height: 170px;
 }
 

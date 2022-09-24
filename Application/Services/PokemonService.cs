@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Application.Repository;
 using Application.ViewModels;
@@ -108,7 +106,18 @@ namespace Application.Services
         public async Task<List<PokemonViewModel>> GetAllViewModel()
         {
             var pokemon = await _repository.GetAllAsync();
-            var pokemonViewModel = await GenerateViewModel(pokemon);
+            var regions = await _regionService.GetAllViewModel();
+            var pokemonTypes = await _pokemonTypeService.GetAllViewModel();
+
+            var pokemonViewModel = pokemon.Select(pokemon => new PokemonViewModel
+            {
+                Id = pokemon.Id,
+                Name = pokemon.Name,
+                ImageUrl = pokemon.ImageUrl,
+                Region = regions.Find(region => region.Id == pokemon.RegionId),
+                PrimaryType = pokemonTypes.Find(pokemonType => pokemonType.Id == pokemon.PrimaryTypeId),
+                SecondaryType = pokemonTypes.Find(pokemonType => pokemonType.Id == pokemon.SecondaryTypeId)
+            }).ToList();
 
             return pokemonViewModel;
         }
@@ -125,24 +134,6 @@ namespace Application.Services
                 PrimaryTypeId = pokemon.PrimaryTypeId,
                 SecondaryTypeId = pokemon.SecondaryTypeId
             };
-        }
-
-        private async Task<List<PokemonViewModel>> GenerateViewModel(List<Pokemon> pokemon)
-        {
-            var regions = await _regionService.GetAllViewModel();
-            var pokemonTypes = await _pokemonTypeService.GetAllViewModel();
-
-            var pokemonViewModel = pokemon.Select(pokemon => new PokemonViewModel
-            {
-                Id = pokemon.Id,
-                Name = pokemon.Name,
-                ImageUrl = pokemon.ImageUrl,
-                Region = regions.Find(region => region.Id == pokemon.RegionId),
-                PrimaryType = pokemonTypes.Find(pokemonType => pokemonType.Id == pokemon.PrimaryTypeId),
-                SecondaryType = pokemonTypes.Find(pokemonType => pokemonType.Id == pokemon.SecondaryTypeId)
-            }).ToList();
-
-            return pokemonViewModel;
         }
     }
 }
